@@ -26,10 +26,12 @@ following command from this repo (the `rm` command is just so you can run it
 multiple times with different flags):
 
 ```bash
-rm -rf site && python3 export_html.py --api https://wiki.issarice.com/api.php --repo riceissa/issawiki-archive --site-repo riceissa/issawiki-static --out site --download-mathjax
+rm -rf site && python3 export_html.py --cache api-cache.json --repo riceissa/issawiki-archive --site-repo riceissa/issawiki-static --out site --download-mathjax
 ```
 
 If you want to view the files locally, you can also pass `--file-links`.
 
-Note that this second command no longer works, since the MediaWiki wiki is no
-longer live, meaning the API URL no longer works.
+Note that this second command was originally also run with `--api
+https://wiki.issarice.com/api.php`, but since the MediaWiki wiki is no longer
+live, the command above will just use the cached API responses that are stored
+in this repo.
