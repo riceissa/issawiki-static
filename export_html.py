@@ -9,9 +9,9 @@ rendered article body (action=parse), rewrites internal links, and wraps it
 in a minimal page with MathJax and a link to the page's history on GitHub.
 
 Output layout (keeps old URLs working when served at the same domain):
-    site/wiki/<Title>/index.html        one per page
-    site/wiki/<Redirect>/index.html     small redirect stubs
-    site/wiki/Special:AllPages/index.html
+    site/wiki/<Title>.html              one per page, served as /wiki/<Title>
+    site/wiki/<Redirect>.html           small redirect stubs
+    site/wiki/Special:AllPages.html
     site/index.html                     -> Main Page
     site/assets/style.css
     site/assets/mathjax/tex-svg.js      (with --download-mathjax)
@@ -46,11 +46,34 @@ URL_SAFE = "/:;@$!*(),~-._'"     # characters MediaWiki leaves unencoded
 
 
 class Wiki:
-    def __init__(self, api, host=None):
-        self.api, self.host = api, host
+    def __init__(self, api, host=None, cache_path=None):
+        self.api, self.host, self.cache_path = api, host, cache_path
+        self.cache, self.hits = {}, 0
+        if cache_path and os.path.exists(cache_path):
+            with open(cache_path, encoding="utf-8") as f:
+                self.cache = json.load(f)
+            print(f"Loaded {len(self.cache)} cached API responses from {cache_path}",
+                  file=sys.stderr)
+
+    def save_cache(self):
+        if self.cache_path:
+            with open(self.cache_path, "w", encoding="utf-8") as f:
+                json.dump(self.cache, f, ensure_ascii=False, sort_keys=True, indent=0)
 
     def call(self, **params):
         params.update(format="json", formatversion="2")
+        key = urllib.parse.urlencode(sorted(params.items()))
+        if key in self.cache:
+            self.hits += 1
+            return self.cache[key]
+        if not self.api:
+            sys.exit(f"Not in the cache and no --api given: {key}")
+        data = self._fetch(params)
+        if self.cache_path:
+            self.cache[key] = data
+        return data
+
+    def _fetch(self, params):
         url = self.api + "?" + urllib.parse.urlencode(params)
         headers = {"User-Agent": "static-archive-export/1.0"}
         if self.host:
@@ -94,18 +117,20 @@ def page_slug(title):
 
 REPO = ""
 SITE_REPO = ""
-FILE_LINKS = False   # set by --file-links: end links in index.html for file:// browsing
+FILE_LINKS = False   # set by --file-links: end links in .html for file:// browsing
 WIKI_DIR = ARTICLE_PATH.strip("/")
 
 
 def root_for(rel_path):
     """Relative prefix from an output file back to the site root,
-    e.g. 'wiki/Foo/Bar/index.html' -> '../../../'."""
+    e.g. 'wiki/Foo/Bar.html' -> '../../'."""
     return "../" * rel_path.count("/")
 
 
 def page_href(root, slug_encoded, frag=""):
-    return (f"{root}{WIKI_DIR}/{slug_encoded}/" + ("index.html" if FILE_LINKS else "")
+    # Extensionless links (/wiki/Foo -> wiki/Foo.html), as hosts like Cloudflare
+    # Pages serve them; same URLs MediaWiki used.
+    return (f"{root}{WIKI_DIR}/{slug_encoded}" + (".html" if FILE_LINKS else "")
             + (f"#{frag}" if frag else ""))
 
 
@@ -341,7 +366,9 @@ def write(path, text):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--api", required=True, help="URL of the wiki's api.php")
+    ap.add_argument("--api", help="URL of the wiki's api.php (not needed if --cache has everything)")
+    ap.add_argument("--cache", help="JSON file of saved API responses: read if it exists, "
+                    "and anything newly fetched is added to it")
     ap.add_argument("--repo", required=True,
                     help="GitHub repo with the revision history, e.g. riceissa/issawiki-archive")
     ap.add_argument("--site-repo",
@@ -352,7 +379,7 @@ def main():
     ap.add_argument("--base", default="", help="URL prefix if not served at the domain root, "
                     "e.g. /issawiki (only used by 404.html; all other links are relative)")
     ap.add_argument("--file-links", action="store_true",
-                    help="end page links in index.html so the site can be browsed straight from "
+                    help="end page links in .html so the site can be browsed straight from "
                          "disk (file://) without a web server")
     ap.add_argument("--download-mathjax", action="store_true",
                     help="download MathJax into OUT/assets/mathjax/ (skipped if already there)")
@@ -362,7 +389,9 @@ def main():
     REPO = args.repo
     SITE_REPO = args.site_repo or ""
     abs_root = args.base.rstrip("/") + "/"
-    wiki = Wiki(args.api, args.host)
+    if not args.api and not (args.cache and os.path.exists(args.cache)):
+        ap.error("give --api, or --cache pointing at an existing cache file")
+    wiki = Wiki(args.api, args.host, args.cache)
 
     si = wiki.call(action="query", meta="siteinfo", siprop="namespaces")
     namespaces = {int(k): v for k, v in si["query"]["namespaces"].items() if int(k) >= 0}
@@ -406,6 +435,10 @@ def main():
         for c in cats:
             members[c].append(title)
 
+    wiki.save_cache()
+    if args.cache:
+        print(f"API cache: {wiki.hits} responses reused, saved to {args.cache}", file=sys.stderr)
+
     formulas = sum(body.count(start) for _, body, _ in pages.values()
                    for start, _ in MATH_INLINE + MATH_DISPLAY)
 
@@ -420,7 +453,7 @@ def main():
 
     out = args.out
     for title, (disp, body, cats) in pages.items():
-        rel = f"{WIKI_DIR}/{page_slug(title)}/index.html"
+        rel = f"{WIKI_DIR}/{page_slug(title)}.html"
         root = root_for(rel)
         body = rewrite_links(body, root, wlh_pages)
         # SimpleMathJax fades formulas until its own JS un-fades them; drop that
@@ -444,7 +477,7 @@ def main():
 
     for r in redirects:
         if r in redirect_to:
-            rel = f"{WIKI_DIR}/{page_slug(r)}/index.html"
+            rel = f"{WIKI_DIR}/{page_slug(r)}.html"
             write(os.path.join(out, rel), redirect_stub(root_for(rel), *redirect_to[r]))
         else:
             print(f"warning: no target found for redirect {r!r}", file=sys.stderr)
@@ -455,7 +488,7 @@ def main():
         prefix = t.split(":", 1)[0] if ":" in t else ""
         ns_name = prefix if any(prefix == v.get("name") for v in namespaces.values()) else ""
         by_ns[ns_name].append(t)
-    rel = f"{WIKI_DIR}/Special:AllPages/index.html"
+    rel = f"{WIKI_DIR}/Special:AllPages.html"
     root = root_for(rel)
     idx = ['<div class="allpages">']
     for ns_name in sorted(by_ns, key=lambda s: (s != "", s)):

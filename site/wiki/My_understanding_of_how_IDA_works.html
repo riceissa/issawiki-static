@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My understanding of how IDA works – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/My_understanding_of_how_IDA_works.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/My_understanding_of_how_IDA_works.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>My understanding of how IDA works</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p>My understanding of how <a href="../wiki/Iterated_amplification" title="Iterated amplification">iterated amplification</a> works:
+</p>
+<div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Explanation"><span class="tocnumber">1</span> <span class="toctext">Explanation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Analysis"><span class="tocnumber">2</span> <span class="toctext">Analysis</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Explanation">Explanation</span></h2>
+<p><b>Stage 0</b>: In the beginning, Hugh directly rates actions to provide the initial training data on what Hugh approves of. This is used to train <span class="math">[math]A_0[/math]</span>. At this point, <span class="math">[math]A_0[/math]</span> is superhuman in some ways and subhuman in others, just like current-day ML systems.
+</p><p><b>Stage 1</b>: In the next stage, Hugh trains <span class="math">[math]A_1[/math]</span>. Instead of rating actions directly, Hugh uses multiple copies of <span class="math">[math]A_0[/math]</span> as assistants. Hugh might break questions down into sub-questions that <span class="math">[math]A_0[/math]</span> can answer. This is still basically Hugh just rating actions, but it's more like "what rating would Hugh give if Hugh was given a bit of extra time to think about it?" So the hope is that <span class="math">[math]A_1[/math]</span> is both more capable than <span class="math">[math]A_0[/math]</span> <i>and</i> it takes actions according to a more foresighted version of Hugh's approval.
+</p><p><b>Stage 2</b>: In the next stage, Hugh trains <span class="math">[math]A_2[/math]</span> using copies of <span class="math">[math]A_1[/math]</span> as assistants. Again, the hope is that the rating given to an action isn't just "what rating does Hugh give to this action?" but more like "what rating does Hugh give to this action if Hugh was given even more extra time to think than the previous stage?"
+</p><p><b>Stage n</b>: In the previous stage, <span class="math">[math]A_{n-1}[/math]</span> was trained. Unlike previous versions of Arthur, <span class="math">[math]A_{n-1}[/math]</span> is superhuman in basically all ways: it can answer sub-questions better, it can break questions into sub-questions better, it makes fewer "mistakes" about what rating to give to an action than Hugh, and so on. We might still want Hugh around, because <span class="math">[math]A_{n-1}[/math]</span> isn't the "ground truth" (it doesn't have access to Hugh's "actual preferences"). But for the purpose of training <span class="math">[math]A_n[/math]</span>, Hugh is basically obsolete. So now a team of <span class="math">[math]A_{n-1}[/math]</span>s, coordinating with each other (with an <span class="math">[math]A_{n-1}[/math]</span> at the "root node") tries to put together a training data for "how do you rate this action?" Hopefully, if nothing has gone horribly wrong, this training data is basically training data for "how would Hugh rate this action, if he was given a huge amount of time, given access to error-correcting tools and a team of human philosophical advisors?" The team of <span class="math">[math]A_{n-1}[/math]</span>s might still ask Hugh some questions like "So uh, Hugh, we're 99.9% sure what the answer is, but you <i>do</i> like chocolate, right?" -- the important point is that the questions do not assume Hugh has a holistic/"big picture strategy" understanding (because by this point Hugh is relaxing on the beach while his assistants take over the world and acquire flexible resources).
+</p><p><b>Stage N</b>: Similar to stage <span class="math">[math]n[/math]</span>, but now Hugh is even less involved in the whole process.
+</p>
+<h2><span class="mw-headline" id="Analysis">Analysis</span></h2>
+<p>The important point is that we meet all three of the following criteria: (1) the whole process is mostly aligned/doing things that are "good for Hugh" in some sense; (2) the resulting AI is competitive; (3) Hugh doesn't have a clue what is going on. Many explanations of IDA don't emphasize (3), so they make it seem like Hugh is always at the "root node" overseeing everything that's going on (which would conflict with (2), hence my confusion).
+</p><p>The overseer is always much more capable than the agent it is trying to train. So we won't have something like the agent pushing the overseer over so that it can press to "i approve" button.
+</p><p>The above does not explain how corrigibility, adversarial training, verification, transparency, and other measures to keep the AI aligned fit into the scheme. This is a separate confusion I (and <a rel="nofollow" class="external text" href="https://www.lesswrong.com/posts/FdfzFcRvqLf4k5eoQ/list-of-resolved-confusions-about-ida#GEakRRgKZbrMJg82w">others</a>) have had about <a href="../wiki/IDA" class="mw-redirect" title="IDA">IDA</a> that I think imitation-based exposition could improve on. But above I've just focused on the "how does IDA get arbitrarily capable at all?" part of my confusion, leaving the other parts for some other time. I'd like to improve the above explanation by adding the stuff about corrigibility, optimizing worst case performance, etc.
+</p><p>One confusion I have is that in some places Paul says things like:<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+<blockquote><p>If the distinguishing characteristic of a genie is "primarily relying on the human ability to discern short-term strategies that achieve long-term value," then I guess that includes all act-based agents. I don't especially like this terminology.</p>
+<p>Note that, logically speaking, "human ability" in the above sentence should refer to the ability of humans working in concert with other genies. This really seems like a key fact to me (it also doesn't seem like it should be controversial).</p></blockquote>
+<p>The precise details of "human ability" seem important here. As I see it, IDA can only remain competitive if the AIs are running the show eventually (and humans are only "running the show" to the extent that they seeded the whole recursive process). In other words, it seems like Sovereigns would also be described as "primarily relying on humans working in concert with AIs".
+</p><p>Some expositions of IDA depend on the human to decompose tasks which are arbitrarily complicated (into slightly less complicated tasks), so that the AI can be trained via supervised learning to learn how to decompose such tasks. For example: "This depends on the strong assumption that humans can decompose all tasks <span class="math">[math]T_n[/math]</span> into tasks in <span class="math">[math]T_{n−1}[/math]</span>".<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup> Doesn't this mean the AI can't be competitive? When the world is crazy, we can't rely on the humans having enough time to train such decompositions.
+</p><p>I guess another thing I don't really understand: eventually, the distillation tries to solve the hardest tasks directly (<span class="math">[math]T_N[/math]</span> in the Evans IDA document). But like, these are things humans can already solve directly, right? So then why didn't we train on human solving these problems directly? Does it take humans too much time to produce enough samples? (The paper does say IDA is intended when "it is infeasible to provide large numbers of demonstrations or sufficiently dense reward signals for methods like imitation learning or RL to work well.") Or is there a safety reason (like, if M knows how to do all these decompositions at the time when it gets trained to solve the hardest tasks, then it will try to reason in a human-like manner)? There seems to be a conflict here with what Paul says about IDA, namely: Paul says that after the first round, the distilled agent will be infrahuman in some says. This seems to imply that the distill procedure isn't powerful enough to mimic a human. But in the Evans document, eventually we train on the amplified system's data directly in order to produce a distilled agent that can do everything a human can. So here it seems like the distill process <i>is</i> powerful enough to mimic a human directly. The only ways out that I can think of:
+</p>
+<ul><li>in the Evans document, IDA doesn't actually get to human tasks in the end</li>
+<li>in Paul's scenario, the distill procedure <i>can</i> actually directly mimic a human, but somehow we don't want to do this (e.g. a safety issue, or because it would require too many samples)</li>
+<li>the distill procedure gets better over time</li>
+<li>the distill procedure doesn't learn straight using supervised learning on training data; instead, it maybe keeps a state of the previous distilled agent, and iteratively modifies it to become the next agent or something</li></ul>
+<p>Related confusion: Paul says after the first round of IDA, the AI is superhuman in some ways and infrahuman in other ways. So there must be something that the AI <i>can't</i> learn to do from supervised learning by looking at human examples. OTOH, it can eventually learn to do everything humans can by looking at a sufficiently amplified system's examples. So what is the difference here? Why does having access to the amplified system's examples allow it to do things it couldn't from human examples alone?
+</p><p>if we break down tasks in T_n, will they really be in T_{n-1}? by default i sort of expect that the task will be broken down in such a way that one of the pieces basically contains all of the difficulty, and that that piece will be just as difficult as the original problem. ok so then what happens if you try to break apart <i>that</i> piece into further pieces? i'm not sure. maybe once you keep doing this, you get to a point where you can't break it down further, or the <i>act of breaking things down</i> itself requires high intelligence (so you can't just learn this from humans).
+</p><p>also wouldn't learning the "breaking down" process itself require too many samples?
+</p><p>ok i think i've identified the most important and most confusing difference between evans paper vs paul's/ajeya's explanations: in the paul version, the amplified system has a human stuck in it, so it makes it seem like you can't produce many samples/examples for the supervised learning to do its job. but in the evans paper, you learn all the decompositions <i>beforehand</i>, so the amplified system is itself completely automatic. So then my question becomes something like, if the number of samples is the problem, then why does paul/ajeya explain it like they do?
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="../wiki/Short-term_preferences-on-reflection" title="Short-term preferences-on-reflection">Short-term preferences-on-reflection</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external free" href="https://arbital.com/p/task_agi/?l=6w#subpage-1gj">https://arbital.com/p/task_agi/?l=6w#subpage-1gj</a></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external free" href="https://owainevans.github.io/pdfs/evans_ida_projects.pdf">https://owainevans.github.io/pdfs/evans_ida_projects.pdf</a></span>
+</li>
+</ol></div>
+</div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:AI_safety">AI safety</a></li><li><a href="../wiki/Category:Iterated_amplification">Iterated amplification</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2020-10-06.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design philosophies of Vim vs Emacs – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Design_philosophies_of_Vim_vs_Emacs.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Design_philosophies_of_Vim_vs_Emacs.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Design philosophies of Vim vs Emacs</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Modal_vs_chording"><span class="tocnumber">1</span> <span class="toctext">Modal vs chording</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Unix_as_IDE_vs_Emacs_as_OS"><span class="tocnumber">2</span> <span class="toctext">Unix as IDE vs Emacs as OS</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#...with_some_exceptions"><span class="tocnumber">2.1</span> <span class="toctext">...with some exceptions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Session_management:_per_project_vs_single_instance"><span class="tocnumber">3</span> <span class="toctext">Session management: per project vs single instance</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Line-based_vs_character-based"><span class="tocnumber">4</span> <span class="toctext">Line-based vs character-based</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Mappings:_keystroke_based_vs_function-based"><span class="tocnumber">5</span> <span class="toctext">Mappings: keystroke based vs function-based</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Actions:_commands_vs_keybindings"><span class="tocnumber">6</span> <span class="toctext">Actions: commands vs keybindings</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Tree-based_undo_vs_stack-based_undo"><span class="tocnumber">7</span> <span class="toctext">Tree-based undo vs stack-based undo</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Multiple_similar_commands_vs_single_repeated_command"><span class="tocnumber">8</span> <span class="toctext">Multiple similar commands vs single repeated command</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Word_movement:_consistent_vs_.22do_the_common_thing.22"><span class="tocnumber">9</span> <span class="toctext">Word movement: consistent vs "do the common thing"</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Scrolling:_scrolloff_vs_scroll-into-view"><span class="tocnumber">10</span> <span class="toctext">Scrolling: scrolloff vs scroll-into-view</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Search_and_replace"><span class="tocnumber">11</span> <span class="toctext">Search and replace</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Visual_noise"><span class="tocnumber">12</span> <span class="toctext">Visual noise</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Prompting_the_user"><span class="tocnumber">13</span> <span class="toctext">Prompting the user</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Documentation:_graph.2Flinear_vs_tree"><span class="tocnumber">14</span> <span class="toctext">Documentation: graph/linear vs tree</span></a></li>
+<li class="toclevel-1 tocsection-16"><a href="#Selection_endpoint"><span class="tocnumber">15</span> <span class="toctext">Selection endpoint</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Messages:_clear_as_late_as_possible.2Fexplicitly_vs_clear_as_soon_as_possible"><span class="tocnumber">16</span> <span class="toctext">Messages: clear as late as possible/explicitly vs clear as soon as possible</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Modal_vs_chording">Modal vs chording</span></h2>
+<ul><li>Atomic edits and the dot command in Vim: When you use Vim, you naturally start to think in terms of repeatable edits that you can then use the <code>.</code> command to repeat. But this has a side-effect in that Vim requires you to manually chunk your undo history. Emacs instead automatically chunks undos.</li>
+<li>One consequence of the modal editing is that I think Vim degrades gracefully to having worse keyboards/a less ergonomic setup in general (<a rel="nofollow" class="external text" href="https://youtu.be/SY8L-cj4x6k?t=3594">or big hands</a>). For example, I bought a fairly crappy external USB keyboard for $25 where if I don't press the Ctrl key very firmly, sometimes it will not register. This hasn't been a problem in most software, but <i>has</i> become a problem when I use Emacs because I need to hold down the Ctrl key a lot for navigating with Ctrl+p and Ctrl+n. In Vim, I don't have this problem at all because Ctrl just isn't a key I need to hold down for long periods; it's something I momentarily hold down, just long enough to press another key. So I have never run into this problem when using Vim (or even Firefox or other software). Emacs is the editor, and really only software, that in some sense <i>requires</i> me to have a nice keyboard.</li>
+<li>Another consequence of modal editing (in particular, the fact that Vi decided to use the escape key as the modal switch to move out of insert and command-line modes) is that since escape is also use in terminal escape sequences, now there is a conflict in interpreting key sequences containing the escape key: is it the user switching out of insert mode and typing some normal-mode commands? Or is it the start of a terminal escape sequence (e.g. use of the arrow keys)? Because of this, Vim added options like ttimeout, ttimeoutlen, esckeys, and probably more, and tmux also has an option called escape-time which used to be necessary to set. If these options are not set correctly, one may have to wait up to 1-3 seconds for the effect of typing an escape key to show up on screen (because without waiting, Vim is not sure if you meant to just type an escape key or if you typed something that began a terminal escape sequence). It also means that unlike in all other terminal applications, you cannot easily use alt-key bindings, and in particular you cannot do the esc-key alternative to send an alt-key binding. If Vim had chosen literally any other key to represent mode switching (such as Ctrl-c, or maybe Ctrl-z which is used in evil-mode on Emacs to toggle between Vim-mode and Emacs-mode), this would not have been a problem. (Not to mention that if such a replacement key was chosen well, it would have been easier to type than Ctrl-[ or the escape key, since the escape key on modern keyboards is far from the home row of the keyboard and the left-square-bracket is vaguely hard to reach for!) Modern terminals like Kitty, and also Neovim, are finally fixing this so that you don't have to ever think about this anymore. But there is still a sort of burden I feel from years of Vim use.</li></ul>
+<h2><span class="mw-headline" id="Unix_as_IDE_vs_Emacs_as_OS">Unix as IDE vs Emacs as OS</span></h2>
+<p>Vim tries to just be a text editor, and tries to play nice with the other tools on your computer, using commands like <code>:!command</code> (runs external command) or <code>:w&#160;!command</code> (pipes text to external command via stdin) or <code>:r&#160;!command</code> (reads from external command via stdout).
+</p>
+<h3><span class="mw-headline" id="...with_some_exceptions">...with some exceptions</span></h3>
+<p>Vim has a built-in spellchecker, whereas Emacs doesn't (it does come with flyspell, which works with an external spellchecker like hunspell or aspell). (Emacs comes with tetris, an RPN calculator, an email client, etc., but not a spell-checker!)
+</p>
+<h2><span class="mw-headline" id="Session_management:_per_project_vs_single_instance">Session management: per project vs single instance</span></h2>
+<p>The "right way" to use Vim is to have one instance of Vim open per "project". Each Vim instance maintains its own current directory, so you can e.g. open files relative to that current directory.
+</p><p>In Emacs, the expectation is that you will have a single Emacs instance open. Emacs itself doesn't maintain its current directory, and instead all file-open actions are relative to the buffer's directory.
+</p><p>Vim can do the Emacs thing with&#160;:set autochdir, but this is disabled by default.
+</p><p>See <a rel="nofollow" class="external text" href="https://nullprogram.com/blog/2017/08/22/">this blog post</a> for more details.
+</p>
+<h2><span class="mw-headline" id="Line-based_vs_character-based">Line-based vs character-based</span></h2>
+<p>Vim comes from a lineage of line-based editors. Registers can be linewise or characterwise, which means that actions like pasting text can act on entire lines or on characters. Some commands, like&#160;:substitute or&#160;:global, only work linewise. This is even reflected in the motion to move up or down a line: by default, j and k move down or up by logical lines instead of screen lines. However, due to this lineage, Vim does not deal well with long lines of text. Recent version of Vim have&#160;:set smoothscroll, but this only partially works.
+</p><p>Emacs is like most other text editors in that it has no concept of linewise. Ctrl-n and Ctrl-p move by screen-lines, not logical lines, which makes sense when you think of the buffer of text as a stream of characters rather than an array of lines.
+</p>
+<h2><span class="mw-headline" id="Mappings:_keystroke_based_vs_function-based">Mappings: keystroke based vs function-based</span></h2>
+<p>In Vim, commands like "copy text" don't have a "name"; they are simply the keystroke that is used to perform that action. So if you want to "program" Vim to repeat some action, such as when defining a mapping, you simply tell Vim which keystrokes you want to repeat.
+</p><p>In Emacs, every keystroke, even entering a single character, has a function that is associated with it. Emacs is simply an interpreter that runs the function associated with the keystroke. You can always do Ctrl-h k followed by the keystroke to find which function is bound to that particular keystroke.
+</p><p>I think that being keystroke-based is one of the reasons Vim is so conservative about default keybindings (even when they are terrible, like Ctrl-b to go to the beginning of the line in command-line mode, or Y to copy the entire line instead of copying to the end of the line), because if you change the default keybinding inside of the C source code, it actually breaks all user mappings and scripts that rely on replaying keystrokes. So then eventually Vim came up with defaults.vim, which is not implemented on the level of C, but instead implemented on the level of Vimscript. By implementing it in Vimscript, it functions like user configuration, so it doesn't change what the original keybindings mean. But doing this also means now you have to reason about multiple levels, the "base layer C keybindings" vs the "default keybindings that you actually interact with". And at that point you've kind of reinvented the thing that Emacs does.
+</p>
+<h2><span class="mw-headline" id="Actions:_commands_vs_keybindings">Actions: commands vs keybindings</span></h2>
+<p>Vim often uses the command-line for even common actions, e.g.&#160;:w to save a file <a rel="nofollow" class="external autonumber" href="https://www.reddit.com/r/vim/comments/267vrv/i_am_tim_pope_crafter_of_plugins_ama/chojzsb/">[1]</a>. Emacs relies more on keybindings, e.g. Ctrl-x Ctrl-s to save a file.
+</p><p>But there are some exceptions. To open the file that the cursor is on, Vim has various keybindings, including <code>gf</code>, <code>gF</code>, Ctrl-w f, etc., but Emacs only has M-x ffap.
+</p>
+<h2><span class="mw-headline" id="Tree-based_undo_vs_stack-based_undo">Tree-based undo vs stack-based undo</span></h2>
+<p>(I think the mark ring in Emacs is also stack-based.)
+</p>
+<h2><span class="mw-headline" id="Multiple_similar_commands_vs_single_repeated_command">Multiple similar commands vs single repeated command</span></h2>
+<p>This one is a bit hard to explain, but there is a definite pattern where Vim prefers to give the user multiple similar commands, while Emacs prefers to give a single command that you can then repeat or use creatively. The best way to explain is to give a bunch of examples:
+</p>
+<ul><li>Changing the screen view relative to cursor: Vim gives you zz to scroll so as to leave the cursor at the center of the screen, zt to scroll and put the cursor at the top, and zb to scroll and put the cursor at the bottom. Emacs just gives you a single command, Ctrl-l, which when repeatedly pressed, will cycle between all three views.</li>
+<li>Moving cursor to top, middle, bottom: Vim gives you H to move cursor to the top of the screen, M to move to middle, and L to move to bottom. Emacs just gives you Alt-r, which will cycle between the three configurations.</li>
+<li>Indenting: The way TAB indenting works in Emacs is very distinctive. You press TAB and Emacs just indents the line to whatever it thinks is the right level. Vim's TAB in insert mode just inserts a literal tab or spaces depending on the 'expandtab' option. But Vim also gives you, in insert mode, Ctrl-f to do the Emacs-like thing, Ctrl-t to indent the current line, Ctrl-d to decrease the indent of the current line. And many more commands in normal mode.</li>
+<li>Folding: Vim gives you fine-grained commands like zo to open a fold, zc to close a fold, zR to globally reduce the fold level in the file, etc. Emacs as far as I know doesn't have folding by default, but certain major modes like org-mode and markdown-mode do have folding, and in these, you simply press TAB to cycle the different folding levels, or Shift-TAB to do the cycling globally across the entire file.</li>
+<li>Vim gives you Y, D, C, to copy, delete, and change (respectively) until the end of the line. Emacs just gives you Ctrl-k, which it then expects you to creatively make use of (e.g. if you want to copy until the end of the line, you do Ctrl-k to delete until the end of the line, then Ctrl-/ to undo).</li>
+<li>Vim has / to search forward,&#160;? to search backward, then n or N to repeat that search in the same direction or opposite direction. Emacs just has Ctrl-s and Ctrl-r to do the search forward or backward. If you want to repeat the search, you just keep pressing Ctrl-s.</li>
+<li>When you have multiple split windows, Vim has Ctrl-w followed by h, j, k, or l to move to that window. It also has Ctrl-w followed by w to keep cycling between the splits. It also has Ctrl-w followed by p to toggle between the two most recent splits. There are just a lot of fine-grained choices you can make. Emacs just gives you Ctrl-x o which cycles.</li>
+<li>Text formatting: Vim gives you two operators, gq and gw, which format text; gq moves the cursor to the end of the formatted text, while gw tries to keep the cursor where it was before the formatting. You can then combine these operators with any motion, e.g. gwip to format the current paragraph, gww to format the current line, gwib to format inside parentheses. Emacs just gives you Alt-q to format the paragraph. It is then up to you to creatively combine that with text selection; you can select some text and then do Alt-q to format just the text that is selected.</li>
+<li>Copy-pasting: Vim gives you named registers, so if you want to copy two different lines and remember both, you do something like <code>"ayy</code> and <code>"byy</code>; then you can paste them with <code>"ap</code> and <code>"bp</code>. In Emacs, you instead kill both lines, and then when you go to paste them, you first Ctrl-y to paste the most recent, and then you do Alt-y to cycle between the most recently killed text.</li>
+<li>Vim has j and k to move down and up by logical lines, and also has gj and gk to move down and up by screen-lines. Emacs only has Ctrl-n and Ctrl-p to move down and up by screen-lines. To move by logical lines, you need to do something creative like Ctrl-e Ctrl-f or Ctrl-a Ctrl-b, or just repeatedly press Ctrl-n or Ctrl-p.</li>
+<li>Probably another manifestation of this is that Vim has a jump list, a change list, and a tag stack. Whereas I think Emacs only has a mark ring.</li></ul>
+<p>In general, I feel that Vim requires more mental energy to use (by forcing the user to pick the action more precisely, and by having the user plan ahead). You need to pick the specific action you wanted to perform. You need to think ahead and decide which registers to use. This also comes from Vim's modal nature, but Vim gives you more decisions and a grammar, whereas Emacs gives you a way to quickly do the common thing. I think much of this may have been forced on the design of Vim by deciding to be keystroke-based, so that the only way to make some action available in normal mode was to assign some key to it. Whereas Emacs went more in the direction of being functions-first, and once you have functions, it is natural to pass arguments to the function to modify the behavior.
+</p>
+<h2><span id="Word_movement:_consistent_vs_&quot;do_the_common_thing&quot;"></span><span class="mw-headline" id="Word_movement:_consistent_vs_.22do_the_common_thing.22">Word movement: consistent vs "do the common thing"</span></h2>
+<p>Vim's word-based motions like w, b, and e always treat contiguous alphanumeric sequences as single words, and also treats contiguous symbols as single words. This leads to a very consistent word movement, which means you will never have to backtrack.
+</p><p>Emacs does the thing that most other text editors do, which is that if the cursor is before/on a symbol, then moving forward by one word will not just jump to the end of the symbols, but will jump to the end of the alphanumeric sequence <i>after</i> the symbols. Emacs caters to the most common thing, and sometimes you need to backtrack.
+</p><p>Suppose you have some text like: <code>Hello, world.</code> and the cursor is past the final period. You want to add the word <code>there</code> before the comma, to make it <code>Hello there, world.</code> In Vim, you press b a few times to move backwards by word, until the cursor is on the comma, at which point you can go into insert mode to type the "there". In Emacs, Alt-b will move the cursor back by word, but once the cursor is on the 'w', pressing Alt-b again will jump past the comma onto the 'H' -- in other words, it overshoots. So then you need to backtrack by pressing Alt-f to move forward by word.
+</p>
+<h2><span class="mw-headline" id="Scrolling:_scrolloff_vs_scroll-into-view">Scrolling: scrolloff vs scroll-into-view</span></h2>
+<p>In Vim, defaults.vim sets scrolloff=5, which means that when the cursor is at the edge of the window, it will always show 5 lines of context. You can never "touch" the very edge of the screen, because the screen will scroll when you try to move to the edge. (But due to Vim's line-oriented heritage, this will scroll into view an entire logical line instead of just one visual line.)
+</p><p>In Emacs, the default behavior is instead to jerk the screen to the center <i>after</i> you step off the edge.
+</p>
+<h2><span class="mw-headline" id="Search_and_replace">Search and replace</span></h2>
+<p>Emacs automatically does all the case variants, e.g. if you search and replace foo → bar, it also does Foo → Bar, FOO → Bar, etc. Vim doesn't do this.
+</p>
+<h2><span class="mw-headline" id="Visual_noise">Visual noise</span></h2>
+<p>Emacs has more visual noise, e.g. the line continuation markers, incremental search by default, highlighting of all search matches as you type, a status bar. Vim comes from an environment where terminals were very slow so it tries by default to not draw to the screen very much. This means fewer things flash on the screen as you do things -- quite monastic vibes.
+</p><p>Of course, by modern standards of things like VS Code, Zed, JetBrains, etc., even Emacs will feel minimal! No line numbers, sidebar with a file tree, no minimap that shows a zoomed out view of the file, no tabs shown by default, no git gutter, no git blame next to every line as the cursor moves, no popups nagging you about updates or extensions to install, no breadcrumbs (path of nested scope at the top), no hover-over documentation.
+</p><p>Both Vim and Emacs have prominent comment colors in their syntax highlighting by default (in Vim it's blue, in Emacs it's red), which I think says a lot. By making most things invisible but making comments stand out, it tells the user that comments are something worth paying attention to. They both come from a saner culture in which programmers were intelligent and comments meant something. Now modern editors have all this crap in your face, and not just that, they make comments <i>grayed out</i> so that they almost fade into the background (VS Code is the one exception, where its default colorscheme has green comments).
+</p>
+<h2><span class="mw-headline" id="Prompting_the_user">Prompting the user</span></h2>
+<p>For Vim, see <a rel="nofollow" class="external autonumber" href="https://www.reddit.com/r/vim/comments/267vrv/i_am_tim_pope_crafter_of_plugins_ama/chojzsb/">[2]</a>.
+</p><p>Emacs often prompts the user.
+</p>
+<h2><span id="Documentation:_graph/linear_vs_tree"></span><span class="mw-headline" id="Documentation:_graph.2Flinear_vs_tree">Documentation: graph/linear vs tree</span></h2>
+<p>Vim uses a wiki-like help system, where you can click on links to read the sections. It also contains a linear book under&#160;:help user-manual. Emacs has a GNU-like hierarchical tree documentation system.
+</p><p>Both have a way to look things up based on keystroke or command name though. Vim has a universal&#160;:help command, while Emacs has e.g. Ctrl-h k for keystrokes or Ctrl-h f for functions.
+</p>
+<h2><span class="mw-headline" id="Selection_endpoint">Selection endpoint</span></h2>
+<p>Vim includes the selection endpoint, whereas Emacs doesn't. The need to make this decision comes from both editors originating on the terminal with block cursors, rather than the more modern I-beam cursors.
+</p>
+<h2><span id="Messages:_clear_as_late_as_possible/explicitly_vs_clear_as_soon_as_possible"></span><span class="mw-headline" id="Messages:_clear_as_late_as_possible.2Fexplicitly_vs_clear_as_soon_as_possible">Messages: clear as late as possible/explicitly vs clear as soon as possible</span></h2>
+<p>Vim only clears messages when the user does ctrl-l or does something that would redraw the screen somehow. Emacs clears as soon as the cursor is moved.
+</p></div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:Design">Design</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2026-01-16.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

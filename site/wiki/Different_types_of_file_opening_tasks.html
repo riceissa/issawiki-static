@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Different types of file opening tasks – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Different_types_of_file_opening_tasks.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Different_types_of_file_opening_tasks.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Different types of file opening tasks</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p><br />
+</p>
+<ol><li>I have a specific path/file I want to open, and I know exactly where it is. Here, I just want to type it out, possibly with some minimal tab-completions so I don't have to type out the whole path. It's also fine if there are some other kinds of "help" the computer provides, like highlighting in red the part of the path that doesn't exist. But importantly, I <i>don't</i> want stuff like fuzzy search or for the program to recursively search my whole filesystem or other annoying things like this. This is why fzf feels so bad to use for me (for file searching; I love it for shell history search), because a lot of the time I <i>know</i> where the thing is, but fzf wants to search my whole hard drive looking in places that I don't care about, and then it often doesn't even find the file I want because other "matches" have filled the results list. Emacs's ido-mode is a good example of a pretty good UI for this. File Pilot also has a "filter" search mode that does a pretty good job of this.</li>
+<li>I have already opened the thing before, or the file is nearby to my current file, or I've added my "library" or whatever to tell the program where to find files, and then I want to just search <i>by the filename</i>, very quickly. This is what stuff like fzf, Neovim's telescope plugin, SumatraPDF's Ctrl-k, are coming from. You know you only need to search a small space, a very limited region, so you want fuzzy find, you want things to just automagically show up as you're typing. But importantly, this only works well if you're searching a small space! If you're searching your whole hard drive, it doesn't work well. Vim natively doesn't have this, which I think is why the plugins like telescope and whatever focus on this use-case, even though in my opinion it's not the most important one.</li>
+<li>You only roughly know where the file is, or maybe not at all, or maybe you aren't even sure if the file exists on your system, so you just want to recursively search from some starting "root" location, and it's ok if the search takes a little longer, because you're not doing it on every keystroke, you're just firing off this search process as a widely cast net to see what comes up. This is Vim's <code>:e **/*</code> and <code>:find</code> command with <code>path+=**</code> and stuff is all about. Gnome's file search thing works pretty well, I think. But it can only do this kind of recursive search. fzf doesn't work well for this use-case either, even though I think it's trying to, because it does fuzzy search by default, whereas for this use-case you probably want case-insensitive substring match by default. Also stuff like Google search is kind of in this use-case as well, even though there you're not searching for a <i>file</i>, rather some websites (but a URL is kind of like a file anyway).</li></ol>
+<p>And I want to be able to have my program just ... seamlessly be able to transition or somehow magically guess which one the user wants? Or at least be able to have all three through separate keybindings. Most programs can only do one or two of these things, so when I want to do the third thing it feels frustrating.
+</p></div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:Design">Design</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2025-12-06.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

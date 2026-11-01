@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spaced proof review – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Spaced_proof_review.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Spaced_proof_review.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Spaced proof review</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p><b>Spaced proof review</b> is the general idea of trying to memorize/deeply understand a theorem using <a href="../wiki/Spaced_repetition" title="Spaced repetition">spaced repetition</a>. This is currently one of my main interests with spaced repetition and with learning in general.
+</p><p>I also want to use this term to mean that particular method of proof review I've settled on? which involves adding the theorem statement on front, then proof solution on back (plus a whole bunch of subtleties about deck options, how to grade yourself, <a href="../wiki/Anki_deck_philosophy" title="Anki deck philosophy">how to split things by deck</a>, etc).
+</p>
+<div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Rationale"><span class="tocnumber">1</span> <span class="toctext">Rationale</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Analysis"><span class="tocnumber">2</span> <span class="toctext">Analysis</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#What_links_here"><span class="tocnumber">4</span> <span class="toctext">What links here</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Rationale">Rationale</span></h2>
+<p>Four steps of insights leading to my current workflow of proof cards:
+</p>
+<ol><li>It's a good idea to store <a href="../wiki/Big_card" title="Big card">big cards</a> in the first place, rather than just smaller cards -- this lets you actually test your knowledge. I have found that if I have only <a href="../wiki/Small_card" title="Small card">small cards</a>, I will know some of the pieces of knowledge that I intend to know, but there might be "gaps", and when I actually sit down to write a proof, I may be unable to do so. That's a problem.</li>
+<li>Separating big cards into their own deck is a good idea, because it prevents breaking your workflow/rhythm while reviewing small cards (see also <a rel="nofollow" class="external text" href="https://twitter.com/michael_nielsen/status/1204079374888128513">this tweet</a>). I found that if I have to sit down and do a proof in the middle of my "normal cards" review session, it makes me more scared to do the normal reviews. I need some extra energy or be in a special mood to want to review proofs, so maintaining a strict separation is good.</li>
+<li>But Anki doesn't "know about" proof cards, so its default deck options are optimized for <a href="../wiki/Small_card" title="Small card">small cards</a>. Thus, changing the deck settings to make review of <a href="../wiki/Big_card" title="Big card">big cards</a> not as onerous is important for keeping the habit. Otherwise you will be asked to do the same problem (that you just got done solving correctly) in 1 day, then in 4 days, then in 7 days -- that's way too frequent!</li>
+<li>When you get stuck on big cards, make life easy on yourself by isolating the difficulty and making smaller cards that help you navigate those difficult points (e.g. difficult steps/insights in proofs). <a href="../wiki/Make_new_cards_when_you_get_stuck" title="Make new cards when you get stuck">Make new cards when you get stuck</a>. So there is some connection between proof cards and normal cards after all: the proof cards are the "real test", and the normal cards are there to help you for this test. And conversely, the proof cards are a check on your normal cards: they are testing if your normal cards are good enough and plenty enough to help you tackle the proof cards.</li></ol>
+<h2><span class="mw-headline" id="Analysis">Analysis</span></h2>
+<p>The main problem with "state this theorem" and "prove this theorem" cards is that if your theorems are actually non-trivial, then it will take some time to write them down and so forth — so if you mix them in with your typical anki cards, then it will break the flow of review. So my current idea is to have a separate deck that's really slowly moving (only 1 card per day (edit: a better idea is to do a <a href="../wiki/Do_an_empty_review_of_proof_cards_immediately_after_adding_to_prevent_backlog" title="Do an empty review of proof cards immediately after adding to prevent backlog">fake "review" as soon as you add a card</a>, and to add cards on the day you first do an exercise)) and with a long time interval (i'm thinking something like 1 month, 1.5 months, 2.5 months, etc. (edit: this turned out to be <a rel="nofollow" class="external text" href="https://gist.github.com/riceissa/9616621772754a94e4254e1590a44afd">horrible</a>)) that just contains some important theorems and their statements. Previously my idea was to do this separately from anki — maybe in an orgmode file or setting up an email reminder — because i had made this theorems deck in anki many months ago but felt ugh-y about actually using it. Then i realized that the reason i felt this way was that the 5 cards per day or whatever, plus the shorter intervals meant i would be proving many things many times, which i didn't want. The idea is to make things fun! and one way to make them fun is to make the intervals longer, reduce your work load, and add only fun theorems.
+</p><p>These days i'm thinking more of my proofs/problems deck as the "main deal" and the smaller cards as things i should make to help me with the main deal. This is possible with math, but i'm not sure how to do this with <a data-dead-link="" class="new" title="AI safety (page does not exist)">AI safety</a> (it's not like there's problems i can solve).
+</p><p>i start to notice a bunch of subtleties about a proof once i put it in the deck. There are a couple of reasons for this: (1) i'm forced to actually do the proof now, instead of just reading, so by doing the proof and comparing with the one in the book, i notice the differences, in particular the places where my proof is lacking. (2) because i forget some of the details of the proof, i start coming up with some alternative ways to do some things. This is like how andrew wiles says that having a bad memory is important for doing math, so that you forget how you got stuck so that you can do things a little differently next time. To give an example of this that i just experienced: i was proving the "length of linearly independent list &lt;= length of spanning list" in axler. i didn't notice until now how subtle the use of the linear dependence lemma was. in particular, you need <i>both</i> parts (a) and (b) of the lemma, and it totally matters that the j is the same in both (a) and (b). until now, it wasn't clear to me why the j had to be the same, and also (b) seemed like an immediate corollary of (a) so i didn't see why it mattered that axler stated both. But now i see how all the parts of that lemma are used in this proof, which motivates things.
+</p><p>the spacing part matters for two reasons. first, you want to be able to prove these things at any point in the future, so the only solution to that is to just keep reviewing it over the course of your life. second, it's important that you forget some things in the proof. you might never forget the main idea, but there might be a small trick somewhere, and you can appreciate it way more if you forget it once and then reinvent it yourself later.
+</p><p>when does a problem deck not work? e.g. i'm worried that this style only works for things like real analysis where there are relatively simple theorems you can prove. what about something like belief propagation, where the "meat" of the content is in a long derivation of the algorithm/formula? and also i'm still not sure about things like godel's first incompleteness theorem: you can put in the diagonalization lemma, but what about all the tedious arithmetization work, which is different in every single textbook? do i just pick one and really internalize it? or should i just forget about internalizing it? Related: <a href="../wiki/The_mathematics_community_has_no_clear_standards_for_what_a_mathematician_should_know" title="The mathematics community has no clear standards for what a mathematician should know">The mathematics community has no clear standards for what a mathematician should know</a>.
+</p><p>one of the mistakes i made earlier is to add theorems from books that i hadn't fully processed. this meant that when it came up in the deck, i had more work to do then. but now i think it's better to do all the work when first making the card. then you know that everything in the deck is something you've deeply processed. there is a kind of relief, rather than a slight panic/dread of "oh boy, is this the day when i'll get that horrible card?"
+</p><p>thought about henkin proof: i entered in some cards related to it a long time ago, but after i did that i lost interest in the proof, and i've never returned to it. as a result, the cards are kind of in a dangling state now. if i were doing this again, i would put the sections of the proof as exercises in the problems deck, and only make the smaller cards if i need them.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="../wiki/Deck_options_for_proof_cards" title="Deck options for proof cards">Deck options for proof cards</a></li>
+<li><a href="../wiki/Do_an_empty_review_of_proof_cards_immediately_after_adding_to_prevent_backlog" title="Do an empty review of proof cards immediately after adding to prevent backlog">Do an empty review of proof cards immediately after adding to prevent backlog</a></li>
+<li><a href="../wiki/Spaced_proof_review_routine" title="Spaced proof review routine">Spaced proof review routine</a></li>
+<li><a href="../wiki/Spaced_proof_review_is_not_about_memorizing_proofs" title="Spaced proof review is not about memorizing proofs">Spaced proof review is not about memorizing proofs</a></li>
+<li><a href="../wiki/Choosing_problems_for_spaced_proof_review" title="Choosing problems for spaced proof review">Choosing problems for spaced proof review</a></li>
+<li><a href="../wiki/Dealing_with_bad_problems_in_spaced_proof_review" title="Dealing with bad problems in spaced proof review">Dealing with bad problems in spaced proof review</a></li>
+<li><a href="../wiki/Spaced_proof_review_as_a_way_to_invent_novel_proofs" title="Spaced proof review as a way to invent novel proofs">Spaced proof review as a way to invent novel proofs</a></li>
+<li><a href="../wiki/Spaced_proof_review_as_a_way_to_understand_key_insights_in_a_proof" title="Spaced proof review as a way to understand key insights in a proof">Spaced proof review as a way to understand key insights in a proof</a></li>
+<li>For my spaced proof review, I make sure to <a href="../wiki/Use_paper_during_spaced_repetition_reviews" title="Use paper during spaced repetition reviews">use paper</a></li>
+<li>Alternatives to spaced proof review:
+<ul><li><a href="../wiki/Linked_list_proof_card" title="Linked list proof card">Linked list proof card</a> -- this is sort of the opposite of the "spaced proof review" method</li>
+<li>Cloze deletion for proofs</li>
+<li>Adding lots of simple front-back cards, as described by <a href="../wiki/Michael_Nielsen" title="Michael Nielsen">Michael Nielsen</a> <a rel="nofollow" class="external free" href="http://cognitivemedium.com/srs-mathematics">http://cognitivemedium.com/srs-mathematics</a></li></ul></li></ul>
+<h2><span class="mw-headline" id="What_links_here">What links here</span></h2>
+<ul id="mw-whatlinkshere-list"><li><a href="../wiki/Linked_list_proof_card" title="Linked list proof card">Linked list proof card</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Linked_list_proof_card#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Anki_deck_philosophy" title="Anki deck philosophy">Anki deck philosophy</a></li>
+<li><a href="../wiki/Spaced_repetition" title="Spaced repetition">Spaced repetition</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Spaced_repetition#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Spaced_proof_review_routine" title="Spaced proof review routine">Spaced proof review routine</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Spaced_proof_review_routine#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Add_the_complete_proof_on_proof_cards_to_reduce_friction_when_reviewing" title="Add the complete proof on proof cards to reduce friction when reviewing">Add the complete proof on proof cards to reduce friction when reviewing</a></li>
+<li><a href="../wiki/Spaced_proof_review_is_not_about_memorizing_proofs" title="Spaced proof review is not about memorizing proofs">Spaced proof review is not about memorizing proofs</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Spaced_proof_review_is_not_about_memorizing_proofs#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Choosing_problems_for_spaced_proof_review" title="Choosing problems for spaced proof review">Choosing problems for spaced proof review</a></li>
+<li><a href="../wiki/Dealing_with_bad_problems_in_spaced_proof_review" title="Dealing with bad problems in spaced proof review">Dealing with bad problems in spaced proof review</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Dealing_with_bad_problems_in_spaced_proof_review#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Using_Anki_for_math" title="Using Anki for math">Using Anki for math</a></li>
+<li><a href="../wiki/Make_new_cards_when_you_get_stuck" title="Make new cards when you get stuck">Make new cards when you get stuck</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Make_new_cards_when_you_get_stuck#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Proof_card" title="Proof card">Proof card</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Proof_card#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Repetition_granularity" title="Repetition granularity">Repetition granularity</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Repetition_granularity#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+<li><a href="../wiki/Deliberate_practice_for_learning_proof-based_math" title="Deliberate practice for learning proof-based math">Deliberate practice for learning proof-based math</a>  ‎ <span class="mw-whatlinkshere-tools">(<a href="../wiki/Deliberate_practice_for_learning_proof-based_math#What_links_here" title="Special:WhatLinksHere">← links</a>)</span></li>
+</ul>
+</div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:Spaced_repetition">Spaced repetition</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2021-08-02.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

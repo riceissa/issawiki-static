@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Architecture.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Architecture.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Architecture</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p>In discussions about AI alignment (especially AI takeoff), the term <b>architecture</b> is used to mean ... something like the basic design of the AI system (like what kind of machine learning is being used in what way, what the high-level organization of the components is). Architecture is used in contrast with <a data-dead-link="" class="new" title="Content (page does not exist)">content</a>, which means something like all the low-level details, the specific knowledge that's hand-coded in, ...? I'm honestly not sure I can distinguish these two very well, and I wish people would define these terms more formally. This might be pointing to the same distinction <a data-dead-link="" class="new" title="Richard Sutton (page does not exist)">Richard Sutton</a> makes in his <a data-dead-link="" class="new" title="Bitter Lesson (page does not exist)">Bitter Lesson</a> post.
+</p><p>see <a rel="nofollow" class="external free" href="https://www.lesswrong.com/posts/jd9LajtGWv93NC8uo/source-code-size-vs-learned-model-size-in-ml-and-in-humans?commentId=9ifYwKyyZmS8ZEyvi">https://www.lesswrong.com/posts/jd9LajtGWv93NC8uo/source-code-size-vs-learned-model-size-in-ml-and-in-humans?commentId=9ifYwKyyZmS8ZEyvi</a> for an example (namely, specialized data structures for a task) where the content/architecture split is unclear.
+</p><p>synonyms? "mental architecture", "cognitive architecture", the "architecture of the AI"
+</p><p>"Hanson defines the “content” of a system to be its small modular features, while its “architecture” is its most important, least modular features." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=553">[1]</a> <a rel="nofollow" class="external autonumber" href="http://www.overcomingbias.com/2008/12/wrapping-up.html">[2]</a>
+</p><p>"For similar reasons, I’m skeptical of a blank-slate AI mind-design intelligence explosion. Sure if there were a super mind theory that allowed vast mental efficiency gains all at once, but there isn’t. Minds are vast complex structures full of parts that depend intricately on each other, much like the citizens of a city. Minds, like cities, best improve gradually, because you just never know enough to manage a vast redesign of something with such complex inter-dependent adaptations." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=554">[3]</a> -- how does Hanson reconcile this with how small the human genome is?
+</p><p>"Hanson mentions Peter Norvig’s recent paper, where Norvig was arguing with Noam Chomsky and saying that it’s wrong to expect there to be a simple elegant theory of linguistics. Instead there are just many messy details that one has to get right, with no key architecture." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=554">[4]</a> -- I think this is conflating two levels. There's the source code level or top level <a rel="nofollow" class="external autonumber" href="https://agentfoundations.org/item?id=1220">[5]</a> and then there's the learned model or subsystem level. The top level can be very simple even if the learned model is not simple (and has lots of messy details). As far as I can understand, the Chomsky position is that the top level is simple, and that <i>there is no subsystem level</i> (because it's not necessary, because the top level can directly do things without statistical learning).
+</p><p><a href="../wiki/Robin_Hanson" title="Robin Hanson">Robin Hanson</a>: "I think our dispute in part comes down to an inclination toward architecture or content. That is, one view is that there's just a clever structure and if you have that basic structure, you have the right sort of architecture, and you set it up that way, then you don't need very much else, you just give it some sense organs, some access to the Internet or something, and then it can grow and build itself up because it has the right architecture for growth. Here we mean architecture for growth in particular, what architecture will let this thing grow well? [...] My opinion [...] is that it's largely about content. There are architectural insights. There are high-level things that you can do right or wrong, but they don't, in the end, add up to enough to make vast growth. What you need for vast growth is simply to have a big base. [...] I think that for minds, what matters is that it just has lots of good, powerful stuff in it, lots of things it knows, routines, strategies, and there isn't that much at the large architectural level." <a rel="nofollow" class="external autonumber" href="https://docs.google.com/document/pub?id=17yLL7B7yRrhV3J9NuiVuac3hNmjeKTVHnqiEa6UQpJk">[6]</a>
+</p><p>"There are things like databases of stored games of chess, usable with chess-playing programs, but that is not the same as having databases of actual cognitive content." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=557">[7]</a> -- So it looks like "content" refers only to knowledge that's hard-coded in, rather than what is learned during training.
+</p><p>"Hanson says that an effective AI system cannot just be created by building the right architecture and feeding it a lot of raw data; it also needs a considerable amount of content to make sense of it." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=559">[8]</a> -- Right, the key question is quantitative: exactly how much initial content (in bytes or some other unit of measure of content) is required?
+</p><p>"Hanson replies that, in addition to good architecture, a human baby also has large amounts of genetically encoded content about the kind of information to pay attention to, and human babies are also explicitly taught." <a rel="nofollow" class="external autonumber" href="https://intelligence.org/files/AIFoomDebate.pdf#page=560">[9]</a> -- How big does Hanson think the genetic content of the human brain is?
+</p><p>is the difference between humans and chimpanzees mostly about architecture or content? there's also the question of humans now vs humans thousands of years ago, where it seems clear that the difference is culture/"content".
+</p><p>if progress happens via compute, is that architecture or content? if progress happens via larger/better datasets, is that architecture or content?
+</p><p>if you come up with a simple learning algorithm that then has to spend a lot of time interacting with the world and using compute, in order to become smart, is that architecture or content? I feel like we need to distinguish the "top level" algorithm from the "secondary level/discovered-by-top-level" algorithm. The top level architecture could be very important, even if the secondary level is basically lots and lots of content. "It seems to me for this particular argument to carry, it's not enough to say you need content. There has to be no master trick to learning or producing content." <a rel="nofollow" class="external autonumber" href="https://docs.google.com/document/pub?id=17yLL7B7yRrhV3J9NuiVuac3hNmjeKTVHnqiEa6UQpJk">[10]</a>
+</p><p>"Intelligence is mostly about architecture, or “knowledge” along the lines of knowing to look for causal structure (Bayes-net type stuff) in the environment; this kind of knowledge will usually be expressed procedurally as well as declaratively. Architecture is mostly about deep insights. This point has not yet been addressed (much) on Overcoming Bias, but Bayes nets can be considered as an archetypal example of “architecture” and “deep insight”. Also, ask yourself how lawful intelligence seemed to you before you started reading this blog, how lawful it seems to you now, then extrapolate outward from that." <a rel="nofollow" class="external autonumber" href="https://www.greaterwrong.com/posts/z3kYdw54htktqt9Jb/what-i-think-if-not-why">[11]</a>
+</p><p>potential synonym and term to search for in the Hanson-Yudkowsky debate: "The Atari case was an example of an event that Robin Hanson called "architecture" and doubted, and that I called "insight"." <a rel="nofollow" class="external autonumber" href="https://www.facebook.com/yudkowsky/posts/10154018209759228">[12]</a>
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="../wiki/Content_sharing_between_AIs" title="Content sharing between AIs">Content sharing between AIs</a></li></ul>
+</div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:AI_safety">AI safety</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2020-06-23.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

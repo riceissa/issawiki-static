@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparison of terms related to agency – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Comparison_of_terms_related_to_agency.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Comparison_of_terms_related_to_agency.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Comparison of terms related to agency</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><table class="wikitable">
+<tbody><tr>
+<th>Term</th>
+<th>Opposite
+</th></tr>
+<tr>
+<td>Agent</td>
+<td>
+</td></tr>
+<tr>
+<td>Optimizer, optimization process</td>
+<td>
+</td></tr>
+<tr>
+<td>Optimized</td>
+<td>
+</td></tr>
+<tr>
+<td>consequentialist</td>
+<td>
+</td></tr>
+<tr>
+<td>expected utility maximizer</td>
+<td>
+</td></tr>
+<tr>
+<td>goal-directed, goal-based</td>
+<td>act-based?
+</td></tr>
+<tr>
+<td>pseudoconsequentialist</td>
+<td>
+</td></tr>
+<tr>
+<td>mesa-optimizer</td>
+<td>
+</td></tr></tbody></table>
+<p>parameters to check for:
+</p>
+<ul><li>is it searching through a list of potential answers?</li>
+<li>does it have an explicit model of the world? i.e. it has counterfactuals (see drescher on subactivation)</li>
+<li>can it be modeled as having a utility function?</li>
+<li>can it be modeled as having a utility function and selecting an action that does an argmax over actions? (note: this does not say how the argmax is <i>implemented</i>, which might be via a search or via some other more "control"-like process)</li>
+<li>can we take an intentional stance toward it? i.e., is it useful (so far as predicting what it will do is concerned) to model it as having intentions?</li>
+<li>is it solving some sort of optimization problem? (but what counts as an optimization problem?)</li>
+<li>origin: was it itself produced by some sort of optimization process?
+<ul><li>eliezer's GLUT idea of "trace the improbability"</li></ul></li>
+<li>does it hit a small target, out of a large space of possibilities?</li>
+<li>how many elements in the space of possibilities is it instantiating?</li>
+<li>cost of evaluation of options/how good of a feedback we get for potential outputs</li>
+<li>online vs offline (maybe also one-shot vs continually outputting things)</li>
+<li>how well does it continue working when the environment/input changes?</li>
+<li><a data-dead-link="" class="new" title="General intelligence (page does not exist)">general intelligence</a> / cross-domain optimization power</li>
+<li>coherence (if it makes sense to assign preferences)</li>
+<li>does it pursue omohundro's "basic AI drives"? (i.e. it is the subject of instrumental convergence)</li>
+<li><a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/DfcywmqRSkBaCB6Ma/intuitions-about-goal-directed-behavior">this post</a> lists more formalizations for what "goal-directed" means</li>
+<li>"For example, consider Dialogic Reinforcement Learning. Does it describe a goal-directed agent? On the one hand, you could argue it doesn’t, because this agent doesn’t have fixed preferences and doesn’t have consistent beliefs over time. On the other hand, you could argue it does, because this agent is still doing long-term planning in the physical world." <a rel="nofollow" class="external autonumber" href="https://www.greaterwrong.com/posts/NxF5G6CJiof6cemTw/coherence-arguments-do-not-imply-goal-directed-behavior#comment-dp5S2bzhiknrC2opg">[1]</a></li></ul>
+<p>examples to check against:
+</p>
+<ul><li>humans</li>
+<li>"subagents" inside of humans</li>
+<li>human who is modeled inside the mind of another human (e.g. for the purposes of predicting behavior)</li>
+<li>evolution/natural selection</li>
+<li>bottlecap</li>
+<li>RL system playing Pong without an explicit model</li>
+<li>tool AGI/CAIS</li>
+<li>task AGI</li>
+<li>KANSI</li>
+<li>mindblind AI</li>
+<li>targeting system on a rocket</li>
+<li>single-step filter</li>
+<li>chess-playing algorithm that just does tree search (e.g. alpha-beta pruning algorithm)</li>
+<li>a simple feed-forward neural network (e.g. one that recognizes MNIST digits)</li>
+<li>a thermostat</li>
+<li>a plant</li>
+<li>multi-armed bandit problem</li>
+<li>Solomonoff induction (outer layer/top-level reasoning)</li>
+<li>plagiarizing robot</li>
+<li>a system trained using imitation learning to behave similarly to another agent <a rel="nofollow" class="external autonumber" href="https://www.greaterwrong.com/posts/9zpT9dikrrebdq3Jf/will-humans-build-goal-directed-agents">[2]</a></li>
+<li>an agent that always twitches; see jessica's comment <a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/NxF5G6CJiof6cemTw/coherence-arguments-do-not-imply-goal-directed-behavior/comment/ymiuDS8uY44xjXxoS">here</a></li></ul>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="../wiki/List_of_terms_used_to_describe_the_intelligence_of_an_agent" title="List of terms used to describe the intelligence of an agent">List of terms used to describe the intelligence of an agent</a></li>
+<li><a href="../wiki/Coherence_and_goal-directed_agency_discussion" title="Coherence and goal-directed agency discussion">Coherence and goal-directed agency discussion</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<p><a rel="nofollow" class="external free" href="https://www.lesswrong.com/posts/ZDZmopKquzHYPRNxq/selection-vs-control">https://www.lesswrong.com/posts/ZDZmopKquzHYPRNxq/selection-vs-control</a>
+</p><p><a rel="nofollow" class="external free" href="https://www.lesswrong.com/posts/rvxcSc6wdcCfaX6GZ/two-senses-of-optimizer">https://www.lesswrong.com/posts/rvxcSc6wdcCfaX6GZ/two-senses-of-optimizer</a>
+</p><p><a rel="nofollow" class="external free" href="https://www.lesswrong.com/posts/Q4hLMDrFd8fbteeZ8/measuring-optimization-power">https://www.lesswrong.com/posts/Q4hLMDrFd8fbteeZ8/measuring-optimization-power</a>
+</p></div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:AI_safety">AI safety</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2021-02-27.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

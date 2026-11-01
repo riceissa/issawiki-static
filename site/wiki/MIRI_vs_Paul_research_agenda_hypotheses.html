@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIRI vs Paul research agenda hypotheses – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/MIRI_vs_Paul_research_agenda_hypotheses.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/MIRI_vs_Paul_research_agenda_hypotheses.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>MIRI vs Paul research agenda hypotheses</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p>from "The concern" in <a rel="nofollow" class="external free" href="https://agentfoundations.org/item?id=1220">https://agentfoundations.org/item?id=1220</a>
+</p>
+<ul><li>"The first AI systems capable of pivotal acts will use good consequentialist reasoning."</li>
+<li>"The default AI development path will not produce good consequentialist reasoning at the top level."</li>
+<li>"Therefore, on the default AI development path, the first AI systems capable of pivotal acts will have good consequentialist subsystem reasoning but not good consequentialist top-level reasoning."</li>
+<li>"Consequentialist subsystem reasoning will likely come “packaged with a random goal” in some sense, and this goal will not be aligned with human interests."</li>
+<li>"Therefore, the default AI development path will produce, as the first AI systems capable of pivotal acts, AI systems with goals not aligned with human interests, causing catastrophe."</li></ul>
+<p>Taking <a data-dead-link="" class="new" title="Owen (page does not exist)">Owen</a>'s suggestion,<sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup> we can change this to:
+</p>
+<ul><li>(M.1) "The first AI systems capable of pivotal acts will use good consequentialist reasoning."
+<ul><li>this could be false if we have something like <a data-dead-link="" class="new" title="KANSI (page does not exist)">KANSI</a> or <a data-dead-link="" class="new" title="Drexler (page does not exist)">Drexler</a>'s <a data-dead-link="" class="new" title="CAIS (page does not exist)">CAIS</a></li></ul></li>
+<li>(M.2) "The default AI development path will not produce good consequentialist reasoning at the top level."</li>
+<li>(M.3) "Consequentialist subsystem reasoning will likely come “packaged with a random goal” in some sense, and this goal will not be aligned with human interests."
+<ul><li>this is the hypothesis paul attacks: he is saying, even without top-level consequentialist reasoning, we can align AI systems.</li>
+<li>I guess this is also the premise that "AI will be safe by default" people would reject: the top-level reasoning stays dominant, so the subsystems aren't really packaged with a random goal.</li></ul></li>
+<li>(M.4) AI systems capable of pivotal acts with goals not aligned with human interests will cause catastrophe.</li></ul>
+<p>key hopes listed in <a rel="nofollow" class="external free" href="https://www.greaterwrong.com/posts/HCv2uwgDGf5dyX5y6/preface-to-the-sequence-on-iterated-amplification">https://www.greaterwrong.com/posts/HCv2uwgDGf5dyX5y6/preface-to-the-sequence-on-iterated-amplification</a>
+</p>
+<ul><li>(P.1) "If you have an overseer who is smarter than the agent you are trying to train, you can safely use that overseer’s judgment as an objective."</li>
+<li>(P.2) "We can train an RL system using very sparse feedback, so it’s OK if that overseer is very computationally expensive."</li>
+<li>(P.3) "A team of aligned agents may be smarter than any individual agent, while remaining aligned."
+<ul><li>this contradicts (M.3), which says that eventually the team of aligned agents will become "packaged with a random goal" in some sense.</li></ul></li></ul>
+<p>Let's list Eliezer's objections to IDA, as summarized by <a data-dead-link="" class="new" title="Rohin (page does not exist)">Rohin</a>:<sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+<ul><li>(E.1) "a collection of aligned agents interacting does not necessarily lead to aligned behavior"
+<ul><li>This directly goes against (P.3), in particular the "while remaining aligned" part.</li></ul></li>
+<li>(E.2) "it’s unclear that even with high bandwidth oversight, that a collection of agents could reach arbitrary levels of capability. For example, how could agents with an understanding of arithmetic invent Hessian-free optimization?"
+<ul><li>This directly goes against (P.3), in particular the "smarter than any individual agent" part. (Well, to be precise, (P.3) does not actually state that these agents can reach <i>arbitrary</i> levels of capability, but Paul thinks IDA can compete with unaligned AGI, so the capabilities part would naturally fall under (P.3).)</li></ul></li>
+<li>(E.3) "while it is true that exact imitation of a human would avoid the issues of RL, it is harder to create exact imitation than to create superintelligence, and as soon as you have any imperfection in your imitation of a human, you very quickly get back the problems of RL."
+<ul><li>This one might not attack one of paul's key hopes, because paul isn't aiming for exact imitation? either that, or the thing it attacks depends on how you cash out "harder to create".</li></ul></li>
+<li>(E.4) "since Paul wants to use big unaligned neural nets to imitate humans, we have to worry about the possibility of adversarial behavior. He has suggested using large ensembles of agents and detecting and pruning the ones that are adversarial. However, this would require millions of samples per unaligned agent, which is prohibitively expensive."
+<ul><li>This one seems to be attacking (P.2), i.e. it's saying we can't use sparse feedback to train the system.</li></ul></li></ul>
+<p>So it looks like each of <a href="../wiki/Eliezer" class="mw-redirect" title="Eliezer">Eliezer</a>'s criticisms of <a href="../wiki/IDA" class="mw-redirect" title="IDA">IDA</a> can mostly be seen as attacking one of the "key hopes" listed by Paul.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="../wiki/List_of_disagreements_in_AI_safety" title="List of disagreements in AI safety">List of disagreements in AI safety</a></li></ul>
+<h2><span class="mw-headline" id="References">References</span></h2>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external free" href="https://agentfoundations.org/item?id=1242">https://agentfoundations.org/item?id=1242</a></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text"><a rel="nofollow" class="external free" href="https://www.greaterwrong.com/posts/4ap6WQx52txzsJx6r/the-alignment-newsletter-7-05-21-18">https://www.greaterwrong.com/posts/4ap6WQx52txzsJx6r/the-alignment-newsletter-7-05-21-18</a></span>
+</li>
+</ol></div>
+</div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:AI_safety">AI safety</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2020-04-26.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

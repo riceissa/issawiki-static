@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UDASSA – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/UDASSA.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/UDASSA.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>UDASSA</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p><b>UDASSA</b> (sometimes also written <b>UD+ASSA</b> to make the two components clear) is a theory of anthropics(? is it <i>just</i> anthropics, or is it also decision theory or a bunch of other things?).
+</p>
+<div id="toc" class="toc"><div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Etymology"><span class="tocnumber">1</span> <span class="toctext">Etymology</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#History"><span class="tocnumber">2</span> <span class="toctext">History</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Description"><span class="tocnumber">3</span> <span class="toctext">Description</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Comparison_to_UDT"><span class="tocnumber">4</span> <span class="toctext">Comparison to UDT</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Etymology">Etymology</span></h2>
+<p>The name "UDASSA" comes from "universal distribution + absolute self-selection assumption".
+</p>
+<h2><span class="mw-headline" id="History">History</span></h2>
+<p>UDASSA was first proposed by <a href="../wiki/Wei_Dai" title="Wei Dai">Wei Dai</a> on <a data-dead-link="" class="new" title="Everything-list (page does not exist)">everything-list</a>.
+</p><p>If I am not mistaken, <a href="../wiki/Paul_Christiano" title="Paul Christiano">Paul Christiano</a> reinvented UDASSA in 2011. Why do I think this? See <a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/sEAW5KbWAf6onq9Mi/anthropics-in-a-tegmark-multiverse">this post</a> from 2011-04-02. In comments, Wei says "Seems like we have a lot of similar ideas/interests.&#160;:) This is was my main approach for solving anthropic reasoning, until I gave it up in favor of UDT." and then links to the UDASSA page. After seeing Wei's comment, Paul then seems to have edited the post to include the following: "Edit: this idea is exactly the same as UDASSA as initially articulated by Wei Dai. I think it is a shame that the arguments aren’t more widespread, since it very cleanly resolves some of my confusion about simulations and infinite cosmologies. My only contribution appears to be a slightly more concrete plan for calculating (or failing to calculate) the Born probabilities; I will report back later about how the computation goes." Then on 2011-04-11, paul posts a <a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/QmWNbCRMgRBcMK6RK/the-absolute-self-selection-assumption">second post</a>, which mentions UDASSA: "In this article I will discuss UDASSA, a framework for anthropic reasoning due to Wei Dai."
+</p><p>some early posts where wei talks about udassa-like things:
+</p>
+<ul><li><a rel="nofollow" class="external free" href="https://riceissa.github.io/everything-list-1998-2009/0302.html">https://riceissa.github.io/everything-list-1998-2009/0302.html</a></li>
+<li><a rel="nofollow" class="external free" href="https://riceissa.github.io/everything-list-1998-2009/0315.html">https://riceissa.github.io/everything-list-1998-2009/0315.html</a></li>
+<li><a rel="nofollow" class="external free" href="https://riceissa.github.io/everything-list-1998-2009/0301.html">https://riceissa.github.io/everything-list-1998-2009/0301.html</a></li>
+<li><a rel="nofollow" class="external free" href="https://riceissa.github.io/everything-list-1998-2009/0316.html">https://riceissa.github.io/everything-list-1998-2009/0316.html</a> (i think this one is considered the first description of udassa)</li></ul>
+<h2><span class="mw-headline" id="Description">Description</span></h2>
+<p>i think it's useful to compare UDASSA to solomonoff induction first. what does solomonoff induction tell us? it takes in some bit string, and then gives you a probability distribution over the next bit, i.e. it takes in some data and then predicts what you're likely to see.
+</p><p>udassa makes use of the universal distribution (the same one that solomonoff induction uses). so how is it different? well, in udassa, instead of interpreting the bit strings as just "abstract objects" or "camera inputs that a robot sees", we instead interpret them as "observer moments". how is this even possible? well, if you take a snapshot of your brain at the current moment, and then scan it/encode it in some standard format, you get some long sequence of bits. so we can take an observer moment and convert it to some bit string. the probability that this bit string appears in the universal distribution is the "measure" of that observer moment. so that's the UD part.
+</p><p>what's the ASSA part? i think the ASSA part just says that this measure under the UD <i>is</i> how likely we are to experience that OM.
+</p><p>actually a better order of introduction might be going from ASSA, and then UD. that's how paul does it <a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/QmWNbCRMgRBcMK6RK/the-absolute-self-selection-assumption">here</a>: the idea is, first we leave the measure unspecified. and we say that how likely we are to experience an OM is the measure of that OM under some measure. finally at the end, we decide that UD would be a fine measure to use here.
+</p><p>here's an alternative that paul mentions, just to show something different so that you know udassa is doing something different: we could have used the measure to find the probability of each world. then in each world, we could find all the OMs (within each world, we weigh each OM equally). As paul says in a <a rel="nofollow" class="external text" href="https://www.greaterwrong.com/posts/sEAW5KbWAf6onq9Mi/anthropics-in-a-tegmark-multiverse">different post</a>, "It is typical to use some complexity prior to select a universe, and then to appeal to some different notion to handle the remaining anthropic reasoning (to ask: how many beings have my experiences within this universe?). What I am suggesting is to instead apply a complexity prior to our experiences directly." What could go wrong if we use this instead? I think the problem is if the universe is infinite. If there are infinitely many copies of you in the universe, then you run into the problem of infinite ethics. So by penalizing harder-to-locate OMs within the universe, you get rid of the problem of infinite ethics. [so I think this alternative is actually the observer-moments version of SSA, so <i>this</i> should be called ASSA/SSSA, and the actual ASSA should be called ASIA; see below]
+</p><p>so what does UDASSA get us? make decisions; explain anthropics; ...
+</p><p>so how can we use UDASSA to make decisions? well, i'm slightly confused here myself. i can think of two possibilities:
+</p>
+<ul><li>define some relevant reference class, like "human observer moments".</li>
+<li>you don't define a reference class. instead, you just define some utility function. and it's the utility function that defines what matters and what doesn't. for example, there will be an observer moment that corresponds to the integer 3. and it's a really simple OM, so it will have high measure! but we don't care about it, so the utility function will just ignore it.</li></ul>
+<hr />
+<p>the shortest program that produces my current OM and the shortest program that produces the OM of someone else on earth right now probably have the same "physical law" part, so the difference is in locating the two of us. now, the weird thing is, <i>one</i> of us will be closer to some "natural" location from which to specify coordinates (e.g. maybe "where the big bang started", if that's even a well-defined location? idk any physics). the upshot is that probably the location part will have a different length (i'm imagining that you use something like a binary search, where each extra bit gets you halfway to where you are; is there a more efficient way to specify coordinates?). and each extra bit means you incur a penalty of 1/2. so even though my OM and their OM "feel just as real" (whatever that means..), one of us will have possibly something like 2<sup>k</sup> times as much measure, where k is the difference in number of bits needed to locate the two OMs. this sounds pretty crazy, especially considering the fact that we shouldn't expect either OM to occur in a larger number of possible worlds. i.e. the only difference between the two OMs is that one happens to be easier to find in the physical world. this is sort of like the "big people matter more" thing that people have brought up, but i find it much more unintuitive. this might be mostly the same problem as "people who are next to black holes matter more"/"people with a giant arrow pointing at them matter more", but the difference seems to be that any difference in distance changes the measure, not just being super close to a big important thing. another weird thing is, as you move around the universe over time, in certain moments you are closer to the "center of the universe" while in other moments you are farther away, so your OM at t1 may be easier to specify than your OM at t2. but you don't really "feel more real" while walking around in a park or whatever; what's going on with this?
+</p>
+<hr />
+<p>shortest way of finding each OM separately vs shortest way of finding all the OMs of a single human's life. the latter will presumably get some efficiency gains by e.g. not needing to keep specifying the time period in full each moment. like, you specify the initial OM in the usual way (like how udassa would specify each OM), but then you can just "follow the consciousness" starting from that OM. so i think it would still take linear complexity to track, but it wouldn't be as complex as finding each om independently?
+</p>
+<hr />
+<p>What does UDASSA say about Fully Homomorphic Encryption? See this <a rel="nofollow" class="external text" href="https://www.scottaaronson.com/blog/?p=1951">post</a> from Scott Aaronson:
+</p>
+<blockquote><p>Maybe my favorite thought experiment along these lines was invented by my former student Andy Drucker.  In the past five years, there’s been a revolution in theoretical cryptography, around something called Fully Homomorphic Encryption (FHE), which was first discovered by Craig Gentry.  What FHE lets you do is to perform arbitrary computations on encrypted data, without ever decrypting the data at any point.  So, to someone with the decryption key, you could be proving theorems, simulating planetary motions, etc.  But to someone without the key, it looks for all the world like you’re just shuffling random strings and producing other random strings as output.</p>
+<p>You can probably see where this is going.  What if we homomorphically encrypted a simulation of your brain?  And what if we hid the only copy of the decryption key, let’s say in another galaxy?  Would <i>this</i> computation—which looks to anyone in <i>our</i> galaxy like a reshuffling of gobbledygook—be silently producing your consciousness?</p></blockquote>
+<p>UDASSA says that as long as we can "extract" the mind easily (i.e. using a short program), then it has high measure. and we can extract it easily as long as we have access to the key, i.e. <i>someone</i> in the universe has the key. what if they destroy the key but the computation keeps going? well, the world simulator can just run the physics simulation to find the timestep when the key still exists, then run to the point that represents the "current" state (i.e. timestep of interest), and they would still be able to extract the mind state. how is this different from extracting "consciousness" from a brick wall? i think the difference is that in the brick wall case, the universe <i>never</i> contained a "key" that would allow it to "unlock" the consciousness (i.e. extract a valid OM using a short program). maybe the tricky thing though is that it takes more bits to specify the observer-moment if the key is separated far in time from the current OM. In other words your consciousness might be reduced by a factor of (1/2)^(length of program to locate the key), since you need to specify the location of the key and the location of the OM, if the two are further enough apart in space/time (and in expectation, specifying two things should mean you should square your original measure, since the program length doubles).
+</p>
+<hr />
+<p>what does udassa say about a giant lookup table? Well, a giant lookup table is still a valid OM right? I don't see why we should disqualify it somehow. The problem is that maybe a giant lookup table has huge storage requirements, so that specifying its coordinates in space and time might cost more bits somehow?
+</p>
+<hr />
+<p>so i actually think "ASSA" is incorrectly named? ASSA is doing the observer-moments version of SIA, so i think it should be called SSIA (in analogy with bostrom's SSSA) or renamed to ASIA.
+</p><p>sleeping beauty already deals with observer moments, but we could make it more obvious by making the beauty live for two seconds in the tails world vs one second in the heads world, and that she has no short term/working memory so she doesn't know in the second second of the tails world that she has existed for one second already. then i think "ASSA" would act like SIA in sleeping beauty, rather than like SSA.
+</p>
+<h2><span class="mw-headline" id="Comparison_to_UDT">Comparison to UDT</span></h2>
+<p>Does UDASSA give any different decisions from UDT? i think one example might be <a rel="nofollow" class="external free" href="https://riceissa.github.io/everything-list-1998-2009/14037.html">https://riceissa.github.io/everything-list-1998-2009/14037.html</a> where UDT seems to give the intuitively-correct answer, but UDASSA doesn't.
+</p><p>what does udassa say about probability of heads in sleeping beauty? well, if each of the three OMs takes an equal complexity to specify, then i think we just get the thirder position, because a randomly selected OM has probability 1/3 of being in a heads world.
+</p><p>but what if the measures of the three OMs are not equal? e.g. maybe it takes 1 bit to specify heads or tails world, then in the tails world, a second bit to specify first or second OM. so now out of all four two-bit strings, two of them are heads and two of them are tails. (by the same reasoning, out of all infinite bit strings, half of them start with "1", a quarter start with "00", and a quarter start with "01".) so p(heads)=1/2.
+</p><p>as you can see, it seems like with udassa, what we decide is the measure of the OM (which depends on what is the shortest program to output that OM) sways the outcome. So the question is, does it take an extra bit to specify monday vs tuesday in the tails world? or does each OM in the tails world take the same length of program to specify as in the heads world? it's not clear to me what's the right answer (i.e. what udassa ends up saying in the end, after you set up the sleeping beauty problem in some "neutral" way).
+</p><p>or maybe i've gotten all of this wrong. what udassa actually gives you is the measure of the OM. but in sleeping beauty, we've stipulated that the beauty can't tell what world she's in. so the OMs in all three spots are the same. they all get counted toward the same OM in the output of udassa. and udassa just tells you the measure of an OM, i.e. how likely you are to experience that OM. but it doesn't tell you the probability of heads. but maybe we could modify the sleeping beauty problem slightly: we change the OM so that in some subconscious part of the beauty's brain is stored the "index" of which copy she is, but she doesn't have conscious access to this index. so the OMs are now distinguished, but beauty can't make use of the information.
+</p><p>see <a rel="nofollow" class="external free" href="https://www.greaterwrong.com/posts/Zz6Nv7kR7xN3RAFAE/insights-from-the-randomness-ignorance-model-are-genuine/comment/3Jz8LeN8rXqxgSwMG">https://www.greaterwrong.com/posts/Zz6Nv7kR7xN3RAFAE/insights-from-the-randomness-ignorance-model-are-genuine/comment/3Jz8LeN8rXqxgSwMG</a> for someone who was thinking along the same lines.
+</p><p>what does UDT say? well, you can read the stuart armstrong paper. basically, udt refuses to give you probabilities! because what matters is the <i>decisions</i>. and you can't make a decision without some sort of bet (e.g. naming the price of a ticket that pays out in the tails world), and some sort of utility function (e.g. selfish, altruistic, ...).
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<h2><span class="mw-headline" id="References">References</span></h2>
+</div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:AI_safety">AI safety</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2023-01-08.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>

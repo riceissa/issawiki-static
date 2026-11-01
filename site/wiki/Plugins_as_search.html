@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plugins as search – Issawiki</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../assets/mathjax/tex-svg.js"></script>
+<script defer src="../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../wiki/Main_Page">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../wiki/Main_Page">Main page</a></li>
+      <li><a href="../wiki/Special:AllPages">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Plugins_as_search.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Plugins_as_search.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Plugins as search</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p>Similarly to how a programming language should strive to incorporate all useful features into itself, instead of making the user meta-program their way into a usable language, a PDF reader or any application should strive to just simply internalize all the useful features, instead of forcing users to script on features in predictably hacky ways. But how do you know which features are useful to incorporate?
+</p><p>A designer of the program somehow "magically, creatively" comes up with a list of features to include in the program. Maybe they have experience with an existing program of the same type (e.g. if they are designing a new text editor, they probably have experience using an existing text editor), so they know what they are looking to add to their own program. But that only raises the question, how did the designer of the original program of that type come up with a list of features? And if you are designing a program, you probably are looking to include some <i>new</i> features that do not exist in any program. So how do you come up with those?
+</p><p>I won't answer that general "What is creativity?" question here. But I want to make the observation that this sort of thing probably, most of the time, happens <i>incrementally</i>, so that at any given moment, a given designer only comes up with one new feature, one thing to tweak, one aspect to change. (Of course, by the time a new piece of software ships, it might have many such features included within it, so that from the public's point of view, it might seem revolutionary. I am here only talking about what the creative process looks like internally.)
+</p><p>If we take this incremental view of creativity seriously, it becomes obvious that no single person has "all the answers" to design.
+</p><p>[not quite sure how to connect the above to the below...]
+</p><p>I've come to view plugins as one way of making the search process for features more parallelized. It would be "better" for the end-user-experience if all features were built into the main application from the start; this provides a smoother experience because plugins necessarily don't have access to program internals etc., so can't provide the features in a fully native way. Plugins are also often buggy because they don't have the same level of quality control as the main application. But it is impossible to armchair your way into a good design for your software! There is just no way to know which features are useful without getting feedback. Some way to quickly hack together a proof of concept idea without having to mess with the internals and source code of the main program would be useful. (Imagine needing to dig into Vim's C source code to be able to add a new feature!)
+</p><p>Instead of the designer of the program having to come up with and implement all features, users of the program can script things onto the program. Seeing which plugins are popular among users provides evidence for which features are actually useful.
+</p><p>It's hard to develop things into the main application, and because it's hard to experiment with trying out different features, plugins are the main way in which you can run experiments out in the wild, to figure out what users want/what's popular, and then the main application can take the results of such experiments and implement the best ones. In other words, plugin make it easier to search the space of all possible improvements to make to the main application. So I mainly see plugins as this somewhat expensive way to get data on what works.
+</p><p>People who praise the Helix editor for internalizing things like LSP, treesitter, etc., (but Helix doesn't have a plugin system) are sort of missing the point here; like, yes, it would be better for the editor to come bundled with all the nice features that users might want, but the only reason Helix is even able to do this in the first place is that there was things like Vim and VS Code and so forth that had a plugin system that allowed for these things to come into existence to be played around with. Without that ability to easily search for what is useful, something like Helix just couldn't even exist.
+</p></div><div class="catlinks">Categories: <ul><li><a href="../wiki/Category:Design">Design</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2025-12-06.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>
