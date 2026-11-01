@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learning-complete – Issawiki</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<script>window.MathJax = {"tex": {"inlineMath": [["[math]", "[/math]"]], "displayMath": [], "processEscapes": true}};</script>
+<script defer src="../../assets/mathjax/tex-svg.js"></script>
+<script defer src="../../assets/pages.js"></script>
+</head>
+<body>
+<div id="sidebar">
+  <a class="logo" href="../../wiki/Main_Page/">Issawiki</a>
+  <nav>
+    <ul>
+      <li><a href="../../wiki/Main_Page/">Main page</a></li>
+      <li><a href="../../wiki/Special:AllPages/">All pages</a></li>
+      <li><a href="#" class="random-page" data-root="../../">Random page</a></li>
+    </ul>
+    <h3>Archive</h3>
+    <ul>
+      <li><a href="https://github.com/riceissa/issawiki-archive">Revision history (git)</a></li>
+      <li><a href="https://github.com/riceissa/issawiki-static">Site source &amp; scripts</a></li>
+    </ul>
+  </nav>
+</div>
+<div id="tabs">
+  <div class="left"><a class="selected">Page</a></div>
+  <div class="right"><a class="selected">Read</a><a href="https://github.com/riceissa/issawiki-archive/blob/main/Learning-complete.mediawiki">View source</a><a href="https://github.com/riceissa/issawiki-archive/commits/main/Learning-complete.mediawiki">View history</a></div>
+</div>
+<main id="content">
+<h1>Learning-complete</h1>
+<div id="siteSub">From Issawiki (static archive)</div>
+<div class="mw-parser-output"><p>An idea I've been toying with, in analogy with terms like "NP-complete" from complexity theory: some learning/teaching tasks seem to have a universality to them, such that once you've figured out how to solve that kind of teaching problem, you automatically can teach any specific thing.
+</p><p>More weakly, you can just think of these as some "models for learning" or ways you can think about learning.
+</p><p>Possible examples:
+</p>
+<ul><li>teaching method: "binary search" the student's mind by asking questions that keep getting harder; this tells you roughly how much they understand, and then you can ask more questions/give "bite-sized nuggets" of lessons/info to "feed" the student. i think this is close to the funnest way to learn (i.e. minimizes boredom no matter what level of knowledge you start out with, because the lesson adjusts to your level). Related: <a href="../../wiki/Exhaustive_quizzing_allows_impatient_learners_to_skip_the_reading/" title="Exhaustive quizzing allows impatient learners to skip the reading">exhaustive quizzing allows impatient learners to skip the reading</a>.</li>
+<li>So imagine we have a very accurate model that can return answers to questions like: "give me the most interesting problem I can solve in 1 hour". It seems plausible to me that you could learn a lot of math/econ/physics/whatever just by asking this question repeatedly and solving these problems. Especially if the model can take into account when you solved problems, so it will know when to re-ask questions or ask similar questions. This is basically like a generalization of <a href="../../wiki/Spaced_repetition/" title="Spaced repetition">spaced repetition</a> systems (where SRS is like the giant lookup table version of this model).</li>
+<li>as an oracle: you can think of the ideal teaching mechanism as like a Q&amp;A oracle where you keep asking the thing that's on your mind until you get all the answers.</li>
+<li>as a recreation of bloom's two sigma in a way which scales.</li>
+<li>as an ML-like prediction problem: the teaching method is to just predict the next best problem you should solve, or the fact you are most likely to be about to forget.</li>
+<li>learning-complete: a method/function you can call that can teach you arbitrary info in a way better than just reading/watching lectures. so i think "easiest problem you can't solve" is one, "question oracle" is another, etc.</li></ul>
+<p>Non-examples:
+</p>
+<ul><li>books -- I think it's quite hard to actually learn lots of things via books. Even people who are good at learning struggle a lot when it comes to learning things via books. Like, in some technical sense books are "complete" in that you can just write down arbitrary messages for the learner, but for practical human purposes it seems insufficient.</li>
+<li>lectures -- same reason.</li></ul>
+<p>reductions/X-complete analogy for learning: what problems are explanations equivalent to? Eg the idea of "asking questions repeatedly".
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a data-dead-link="" class="new" title="Deliberate practice (page does not exist)">Deliberate practice</a></li></ul>
+</div><div class="catlinks">Categories: <ul><li><a href="../../wiki/Category:Spaced_repetition/">Spaced repetition</a></li></ul></div>
+
+</main>
+<footer>
+<p>This page was last edited on 2021-07-16.</p>
+<p>This is a static copy of a MediaWiki that used to be hosted at this same address.</p>
+</footer>
+</body>
+</html>
